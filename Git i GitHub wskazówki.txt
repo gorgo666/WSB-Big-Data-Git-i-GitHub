@@ -1,0 +1,43 @@
+git branch funkcja-logowania => utwórz gałąź
+git checkout funkcja-logowania => przełącz na gałąź
+git checkout -b funkcja-logowania => utwórz i przełącz
+git branch => Lista gałęzi
+
+git merge => łączenie gałęzi
+git rebase => tego do końca nie rozumiem
+git cherry-pick nazwa-gałęzi-numer => przenoszenie zmian z jednej gałęzi na drugą
+
+git init => inicjowanie 
+git add => dodawanie do poczekalni??
+git commit -m lub bez -m dodawanie opisu zmiany
+
+utwórz repozytorium na GitHub ale najpierw!!!
+
+Trzeba stworzyć SSH:
+
+🔧 KROK 1: Sprawdź, czy masz już klucze SSH?
+ls -al ~/.ssh
+
+Jeśli nie ma takich plików, przejdź do następnego kroku.
+🗝️ KROK 2: Utwórz nowy klucz SSH
+ssh-keygen -t ed25519 -C "swój@email.com"
+Jeśli pojawi się błąd, że ed25519 nie jest obsługiwany (na starszych systemach), użyj:
+ssh-keygen -t rsa -b 4096 -C "swój@email.com"
+
+📋 KROK 3: Uruchom agenta SSH i dodaj klucz
+eval "$(ssh-agent -s)"
+a potem:
+ssh-add ~/.ssh/id_ed25519
+
+📤 KROK 4: Skopiuj klucz publiczny
+cat ~/.ssh/id_ed25519.pub
+Skopiuj cały tekst, który wygląda mniej więcej tak:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... twój@email.com
+
+🌐 KROK 5: Dodaj klucz do GitHuba
+Wejdź na https://github.com/settings/keys
+Profil => settings => SSH and GPG keys
+Kliknij "New SSH key" lub "Add SSH key"
+W polu Title wpisz np. Mój laptop
+W polu Key wklej skopiowany klucz
+Kliknij Add SSH key
